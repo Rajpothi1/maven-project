@@ -21,7 +21,7 @@ public class CartServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session=req.getSession();
-		SimpleDateFormat sdf=new SimpleDateFormat();
+//		SimpleDateFormat sdf=new SimpleDateFormat();
 		System.out.println("pothi");
 		int userid=Integer.parseInt(session.getAttribute("user id").toString());
 		System.out.println("pothi2");

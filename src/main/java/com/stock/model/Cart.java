@@ -69,6 +69,11 @@ public Cart(int userId, int productId, int qunatity, double totalPrice, int expe
 	this.totalPrice = totalPrice;
 	this.expectedDate = expectedDate;
 }
+public Cart(int productId,int userId) {
+	super();
+	this.userId = userId;
+	this.productId = productId;
+}
 
 
 

@@ -89,9 +89,9 @@ padding:20px;
           </tr>
        
        
-       <a href="edititems.jsp"><button type="submit">Edit item</button></a>
-       <a href = "deleteproduct.jsp">DELETE</a>
-       <a href = "updateitem.jsp">UPDATE</a>
+       <a href="edititems.jsp"><button type="submit">add item</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a href = "deleteproduct.jsp"><button type="submit">delete item</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+       <a href = "updateitem.jsp"><button type="submit">update item</button></a>
          <% while(rs.next())
         { 
        

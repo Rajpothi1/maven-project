@@ -71,22 +71,24 @@ padding:20px;
         <li style="float: right;"><a href="#logout">logout</a></li>
         <br><br>
       </ul>
-      <%int user_id=Integer.parseInt(session.getAttribute("user id").toString());
-      CartImpl cimpl=new CartImpl();
-      ResultSet rs=  cimpl.allcart(user_id);
+      <%
+      PuruchaseImpl pimpl=new  PuruchaseImpl();
+      ResultSet rs=  pimpl.showPurchase();
           //(ResultSet)session.getAttribute("showProduct");
       %>
     <br>
      <table style="width:80%;margin-left:100px;">
           <tr>
             
-            <th scope="col">cart_id</th>
+            <th scope="col">order_id</th>
+            <th scope="col">product_id</th>
             <th scope="col">user_id</th>
-             <th scope="col">product_id</th>
+             <th scope="col">product_name</th>
             <th scope="col">product_quantity</th>
             <th scope="col">total_price</th>
+            <th scope="col">status</th>
             <th scope="col">date</th>
-            <th>Purchase</th>
+            
           </tr>
        
        
@@ -100,10 +102,13 @@ padding:20px;
             <td><%=rs.getInt(1)%></td>
             <a><td><%=rs.getInt(2)%></td>
             <td><%=rs.getInt(3)%></td>
-            <td><%=rs.getInt(4)%></td>
-            <td><%=rs.getDouble(5)%></td>
-            <td><%=rs.getDate(6)%></td>
-            <td><a href="purchase.jsp?cartid=<%=rs.getInt(1)%>">Buy</a></a></td>
+             <td><%=rs.getString(4) %></td>
+              <td><%=rs.getInt(5)%></td>
+            <td><%=rs.getDouble(6)%></td>
+             <td><%=rs.getString(7)%></td>
+            
+            <td><%=rs.getDate(8)%></td>
+            
            		
       
           </tr>

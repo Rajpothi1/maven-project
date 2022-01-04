@@ -24,10 +24,13 @@
             <label>Product Name :</label><%=rs.getString(2)%><br>
 			<lable>Product Quantity :</lable><%=rs.getInt(3)%><br>
 			<lable>Product Price :</lable><%=rs.getDouble(4)%><br>
+			
+			
 			<% session.setAttribute("product id",rs.getInt(1) );
 			session.setAttribute("price",rs.getDouble(4));
+			session.setAttribute("productName", rs.getString(2));
 			%>
-       <%} %> 
+      <%} %>  
        
       
        
@@ -35,8 +38,8 @@
        <input type="number" name="quantity" id="quantity" ><br>
         <lable>Expected no of days :</lable>
        <input type="number" name="date" id="date" ><br>
-       
-       <button type="submit" >submit</button>
+             <button type="submit" >submit</button>
+      
        </form>
 </body>
 </html>

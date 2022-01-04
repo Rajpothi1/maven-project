@@ -81,6 +81,14 @@ public class Purchase {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public Purchase(int productId, int userId, String productName, int orderQty, double totalPrice) {
+		super();
+		this.productId = productId;
+		this.userId = userId;
+		this.productName = productName;
+		this.orderQty = orderQty;
+		this.totalPrice = totalPrice;
+	}
 	
 	
 	

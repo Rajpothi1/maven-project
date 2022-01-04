@@ -2,6 +2,28 @@
 <web-app id="WebApp_ID" version="2.4" xmlns="http://jAVA.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 	<display-name>stockInventoryProject</display-name>
+	<servlet>
+		<description>
+		</description>
+		<display-name>PurchaseList</display-name>
+		<servlet-name>PurchaseList</servlet-name>
+		<servlet-class>com.stock.controller.PurchaseList</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>ForgetPassword</display-name>
+		<servlet-name>ForgetPassword</servlet-name>
+		<servlet-class>com.stock.controller.ForgetPassword</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PurchaseList</servlet-name>
+		<url-pattern>/PurchaseList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ForgetPassword</servlet-name>
+		<url-pattern>/ForgetPassword</url-pattern>
+	</servlet-mapping>
 	
 
 </web-app>

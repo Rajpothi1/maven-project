@@ -2,17 +2,26 @@ package com.stock.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.stock.model.Purchase;
 import com.stock.util.ConnectionUtil;
 
 public class PuruchaseImpl {
 public void insert(Purchase purchase) throws SQLException, ClassNotFoundException {
-		
+		String updateQuery="update users set wallet=(select wallet from users where user_id=?)-? where user_id=?";
 		String insertQuery="insert into purchases_list (product_id,user_id,product_name,quantity,total_price )values (?,?,?,?,?)";
 		
 		Connection con=ConnectionUtil.gbConnection();
+		PreparedStatement pstmt1= con.prepareStatement(updateQuery);
+		pstmt1.setInt(1, purchase.getUserId());
+		pstmt1.setDouble(2, purchase.getTotalPrice());
+		pstmt1.setInt(3, purchase.getUserId());
+		int j=pstmt1.executeUpdate();
+		System.out.println("updated"+j);
+		
 		PreparedStatement pstmt= con.prepareStatement(insertQuery);
 		pstmt.setInt(1, purchase.getProductId());
 		pstmt.setInt(2, purchase.getUserId());
@@ -52,7 +61,22 @@ public void updated(Purchase purchase1 ) throws SQLException, ClassNotFoundExcep
 	System.out.println(i+"delete");
 	}
 	
+	public ResultSet showPurchase() {
+		String showquery = "select * from purchases_list";
+		Connection con;
+		ResultSet rs=null;
+		try {
+			con = ConnectionUtil.gbConnection();
+			Statement stmt = con.createStatement();
+			rs = stmt.executeQuery(showquery);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		return rs;
+	}
+
 		
 		
 
