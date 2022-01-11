@@ -120,6 +120,40 @@ String query="insert into users(user_name,email,address,password,phonenumber)val
 			e.printStackTrace();
 		}
 	}
+	public void wallet(User userwallet) {
+
+		String updatewallet = "update users set  WALLET=wallet + ? where password=?";
+
+		Connection con;
+		try {
+			con = ConnectionUtil.gbConnection();
+			PreparedStatement pstmt = con.prepareStatement(updatewallet);
+
+			pstmt.setDouble(1,userwallet.getWallet());
+			pstmt.setString(2, userwallet.getPassword());
+			int i = pstmt.executeUpdate();
+			pstmt.executeUpdate("commit");
+			System.out.println(i + "updated");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public ResultSet walletamount(int userid) throws ClassNotFoundException, SQLException {
+		String updatewallet = "select * from users where user_id=?";
+
+		Connection con;
+		con = ConnectionUtil.gbConnection();
+		PreparedStatement pstmt = con.prepareStatement(updatewallet);
+		pstmt.setInt(1, userid);
+		ResultSet rs=pstmt.executeQuery();
+		return rs;
+		
+	}
 
 	
 }

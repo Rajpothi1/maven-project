@@ -9,7 +9,21 @@ public class User {
 	private String address;
 	private String password;
 	private long phoneNumber;
+	private double wallet;
 	
+	
+	public User(int userId) {
+		super();
+		this.userId = userId;
+	}
+
+
+	public User(double wallet,String password) {
+		super();
+		this.password = password;
+		this.wallet = wallet;
+	}
+
 	
 	public int getUserId() {
 		return userId;
@@ -46,6 +60,14 @@ public class User {
 	}
 	public void setPhonenumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+	
+	
+	public double getWallet() {
+		return wallet;
+	}
+	public void setWallet(double wallet) {
+		this.wallet = wallet;
 	}
 	@Override
 	public String toString() {

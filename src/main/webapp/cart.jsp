@@ -53,6 +53,10 @@ border:1px solid black;
 border-collapse:collapse;
 padding:20px;
 }
+body
+{
+ background:linear-gradient(lightblue,lightgreen);
+}
 </style>
 </head>
 <body>
@@ -63,12 +67,16 @@ padding:20px;
     </div>
     <br>
     <ul>
-        <li><a class="active" href="#home">stock item</a></li>
-        <li><a href="#suppiler">suppiler</a></li>
-        <li><a href="#purchase">PURCHASE</a></li>
-        <li><a href="#customer">customer</a></li>
-        <li><a href="#help">help</a></li>
-        <li style="float: right;"><a href="#logout">logout</a></li>
+        <li><a class="active" href="stockItemsusers.jsp">stock item</a></li>
+        <li><a class="active" href="cart.jsp">cart</a></li>
+     
+        
+      
+         <li style="float: right;"><a class="active" href="index.jsp">logout</a></li>
+        <li style="float: right;"><a class="active" href="walletrecharge.jsp">wallet</a></li>
+        <li><a  class="active" href = "userpurchaselist.jsp">My order List</a></li>
+           <li> <a  class="active"href = "userinvoice.jsp">  invoice </a></li>
+             <li><a class="active" href="#help">help</a></li>
         <br><br>
       </ul>
       <%int user_id=Integer.parseInt(session.getAttribute("user id").toString());
@@ -103,7 +111,7 @@ padding:20px;
             <td><%=rs.getInt(4)%></td>
             <td><%=rs.getDouble(5)%></td>
             <td><%=rs.getDate(6)%></td>
-            <td><a href="purchase.jsp?cartid=<%=rs.getInt(1)%>">Buy</a></a></td>
+            <td><a href="purchase.jsp?cartid=<%=rs.getInt(1)%>"><button type="button" class="btn btn-primary">Buy</button></a></td>
            		
       
           </tr>

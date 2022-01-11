@@ -1,19 +1,16 @@
+   
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-     <%@ page import="java.sql.ResultSet"
- import ="com.stock.impl.*" import = "javax.servlet.http.HttpSession" %>   
- 
-    <%
-    String pName=request.getParameter("pname");
-
-    %>
-    <!DOCTYPE html>
-<html>
+ <%@ page import="java.sql.ResultSet"
+ import ="com.stock.impl.*" %>   
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>product Details</title>
-
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock item</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -60,11 +57,6 @@ body
 {
  background:linear-gradient(lightblue,lightgreen);
 }
-.mov{
-	margin-top:40px
-	}
-	
-
 </style>
 </head>
 <body>
@@ -87,47 +79,51 @@ body
              <li><a class="active" href="#help">help</a></li>
         <br><br>
       </ul>
-    
-<form action="purchase" method="post">
-<div class="#">
-	<%int user_id=Integer.parseInt(session.getAttribute("user id").toString());
-    String productName=session.getAttribute("productName").toString();
-	CartImpl cimpl=new CartImpl();
-    ResultSet rs=  cimpl.allcart(user_id);
-	if(rs.next()) { %>
-            <center class="mov">
-          
-            <label>Product Id :</label> <input type="text" name="prodid" value="<%=rs.getInt(3)%>" ><br>
+      <%
+      int user_id=Integer.parseInt(session.getAttribute("user id").toString());
+      PuruchaseImpl pimpl=new  PuruchaseImpl();
+      ResultSet rs=  pimpl.userPurchaselist(user_id);
+          //(ResultSet)session.getAttribute("showProduct");
+      %>
+    <br>
+     <table style="width:80%;margin-left:100px;">
+          <tr>
+.            
+            <th scope="col">order_id</th>
+            <th scope="col">product_id</th>
+            <th scope="col">user_id</th>
+             <th scope="col">product_name</th>
+            <th scope="col">product_quantity</th>
+            <th scope="col">total_price</th>
+            <th scope="col">status</th>
+            <th scope="col">date</th>
             
-            <label>user Id :</label> <b><%=rs.getInt(2)%></b> <br>
-            <label>Product Name :</label><%=productName%><br>
-			<lable>Product Quantity :</lable><%=rs.getInt(4)%><br>
-			<lable>total Price :</lable><%=rs.getDouble(5)%><br>
-			<% session.setAttribute("product id",rs.getInt(3) );
-			session.setAttribute("price",rs.getDouble(5));
-			session.setAttribute("productname",productName );
-			session.setAttribute("quantity", rs.getInt(4));
-			
-			
-			
-			
-			%>
-			
-       <%} %> 
+          </tr>
        
+       
+       
+         <% while(rs.next())
+        { 
+       
+        %>
+          <tr>
+            
+            <td><%=rs.getInt(1)%></td>
+            <a><td><%=rs.getInt(2)%></td>
+            <td><%=rs.getInt(3)%></td>
+             <td><%=rs.getString(4) %></td>
+              <td><%=rs.getInt(5)%></td>
+            <td><%=rs.getDouble(6)%></td>
+             <td><%=rs.getString(7)%></td>
+            
+             <td><%=rs.getDate(8)%></td>
+            
+         	
+           		
       
-       
-
-       
-    <a href="purchaseList.jsp"><button type="button" class="btn btn-primary">confirm</button></a>
-       
-      <a href="cart.jsp" ><button type="button" class="btn btn-dark">Cancel</button></a>
-       
-       
-       </center>
-       </div>
-       </form>
-
-
+          </tr>
+           <%} %>
+     
+      </table>
 </body>
 </html>

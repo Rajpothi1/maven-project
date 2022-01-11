@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.stock.impl.StockImpl;
 import com.stock.impl.UserImpl;
 import com.stock.model.User;
 
@@ -41,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		try {
 			session.setAttribute("user id", rs.getInt(1));
+			session.setAttribute("walletamount", rs.getDouble(8));
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

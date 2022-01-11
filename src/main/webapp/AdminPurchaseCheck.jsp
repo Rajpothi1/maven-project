@@ -1,3 +1,4 @@
+   
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ page import="java.sql.ResultSet"
@@ -8,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>supplier Details</title>
+    <title>Stock item</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -71,21 +72,24 @@ padding:20px;
         <br><br>
       </ul>
       <%
-      SupplierImpl simpl=new SupplierImpl();
-            
-            
-          ResultSet rs=simpl.showSupplier();
+      PuruchaseImpl pimpl=new  PuruchaseImpl();
+      ResultSet rs=  pimpl.showPurchase();
           //(ResultSet)session.getAttribute("showProduct");
       %>
     <br>
      <table style="width:80%;margin-left:100px;">
           <tr>
             
+            <th scope="col">order_id</th>
             <th scope="col">product_id</th>
-            <th scope="col">product_name</th>
+            <th scope="col">user_id</th>
+             <th scope="col">product_name</th>
             <th scope="col">product_quantity</th>
-            <th scope="col">price</th>
-            <th scope="col">choice</th>
+            <th scope="col">total_price</th>
+            <th scope="col">status</th>
+            <th scope="col">date</th>
+              <th scope="col">Delivery</th>
+            
           </tr>
        
        
@@ -97,16 +101,26 @@ padding:20px;
           <tr>
             
             <td><%=rs.getInt(1)%></td>
-            <td><%=rs.getString(2)%></td>
-             <td><%=rs.getString(3)%></td>
-              <td><%=rs.getString(4)%></td>
-               <td><%=rs.getLong(5)%></td>
-               <td><%=rs.getString(6)%></td>
-                <td><%=rs.getDouble(7)%></td>
-                 <td><%=rs.getInt(8)%></td>
-           
-          
-           		 <td><a href="product.jsp?pname=<%=rs.getString(2)%>"><button type="submit">select item</button></a></td>
+            <a><td><%=rs.getInt(2)%></td>
+            <td><%=rs.getInt(3)%></td>
+             <td><%=rs.getString(4) %></td>
+              <td><%=rs.getInt(5)%></td>
+            <td><%=rs.getDouble(6)%></td>
+             <td><%=rs.getString(7)%></td>
+            
+            <td><%=rs.getDate(8)%></td>
+              <td>
+              
+              
+              
+              <form action="invoice">
+        Enter delivery no of days<input type="number" name="deliveryDate">
+              <button type="submit">Submit
+              </button>
+              </form></td>
+            
+         	<% session.setAttribute("orderid",rs.getInt(1) );%>
+           		
       
           </tr>
            <%} %>

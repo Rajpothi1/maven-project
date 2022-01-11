@@ -63,9 +63,9 @@ padding:20px;
     <br>
     <ul>
         <li><a class="active" href="#home">stock item</a></li>
-        <li><a href="#suppiler">suppiler</a></li>
-        <li><a href="#purchase">PURCHASE</a></li>
-        <li><a href="#customer">customer</a></li>
+        <li><a href="cart.jsp">Cart</a></li>
+        <li><a href="purchaseList.jsp">PURCHASE list</a></li>
+        <li><a href="invoice.jsp">invoice</a></li>
         <li><a href="#help">help</a></li>
         <li style="float: right;"><a href="#logout">logout</a></li>
         <br><br>
@@ -89,9 +89,12 @@ padding:20px;
           </tr>
        
        
-       <a href="edititems.jsp"><button type="submit">add item</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <a href = "deleteproduct.jsp"><button type="submit">delete item</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
-       <a href = "updateitem.jsp"><button type="submit">update item</button></a>
+       <a href="Additems.jsp"><button type="button" class="btn btn-primary">Add item</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a href = "deleteproduct.jsp"><button type="button" class="btn btn-primary">Delete item </button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+       <a href = "updateitem.jsp"><button type="button" class="btn btn-primary">update item</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+       
+         <a href = "AdminPurchaseCheck.jsp"><button type="button" class="btn btn-primary">purchaseList</button></a>
+       
          <% while(rs.next())
         { 
        

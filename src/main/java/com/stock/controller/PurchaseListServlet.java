@@ -34,7 +34,7 @@ public class PurchaseListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -48,38 +48,24 @@ public class PurchaseListServlet extends HttpServlet {
 
 		int userid = Integer.parseInt(session.getAttribute("user id").toString());
 		System.out.println(userid);
-		
+
 		String prodname = (session.getAttribute("productname").toString());
 		System.out.println(prodname);
-		int quantity =Integer.parseInt (session.getAttribute("quantity").toString());
+		int quantity = Integer.parseInt(session.getAttribute("quantity").toString());
 		System.out.println(quantity);
-		double totalprice = Double.parseDouble (session.getAttribute("price").toString());
+		double totalprice = Double.parseDouble(session.getAttribute("price").toString());
 		System.out.println(totalprice);
-		Purchase purchase=new Purchase(productid,userid,prodname,quantity,totalprice);
-		
-		PuruchaseImpl pimpl=new PuruchaseImpl();
-	     try {
-			pimpl.insert(purchase);
-			Cart cart=new Cart(productid,userid);
-		CartImpl cimpl=new CartImpl();
+		Purchase purchase = new Purchase(productid, userid, prodname, quantity, totalprice);
+
+		PuruchaseImpl pimpl = new PuruchaseImpl();
+		pimpl.insert(purchase);
+		Cart cart = new Cart(productid, userid);
+		CartImpl cimpl = new CartImpl();
 		cimpl.delete(cart);
-			
-//			response.sendRedirect("purchaseList.jsp");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	     
-	     
-	     
-	     response.sendRedirect("purchaseList.jsp");
+
+		response.sendRedirect("purchaseList.jsp");
 
 	}
-
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

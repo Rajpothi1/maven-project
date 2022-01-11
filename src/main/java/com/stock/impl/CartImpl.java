@@ -10,11 +10,12 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.stock.dao.CartDao;
 import com.stock.model.Cart;
 import com.stock.model.Purchase;
 import com.stock.util.ConnectionUtil;
 
-public class CartImpl {
+public class CartImpl implements CartDao {
 
 	public void insert(Cart cart) {
 
@@ -82,19 +83,29 @@ public ResultSet allcart(int userid){
 			
 			
 }		
-	public void delete(Cart cart) throws SQLException, ClassNotFoundException {
+	public void delete(Cart cart) {
 		
 		String deleteQuery="delete from cart where  product_id=? and user_id=?";
 		
-		Connection con=ConnectionUtil.gbConnection();
-		PreparedStatement pstmt= con.prepareStatement(deleteQuery);
-		
-		pstmt.setInt(1, cart.getProductId());
-		pstmt.setInt(2, cart.getUserId());
-		
-		int i=pstmt.executeUpdate();
-		System.out.println(i+"delete");
+		Connection con;
+		try {
+			con = ConnectionUtil.gbConnection();
+			PreparedStatement pstmt= con.prepareStatement(deleteQuery);
+			
+			pstmt.setInt(1, cart.getProductId());
+			pstmt.setInt(2, cart.getUserId());
+			
+			int i=pstmt.executeUpdate();
+			System.out.println(i+"delete");
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+				}
 		
 			
 			

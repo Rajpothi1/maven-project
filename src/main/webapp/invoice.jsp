@@ -1,3 +1,4 @@
+   
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ page import="java.sql.ResultSet"
@@ -14,10 +15,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <style>
-    body
-    {
-     background:linear-gradient(lightblue,lightgreen);
-    }
     .h1{
         background-color: red;
         position: absolute; left: 10px;top: 10px;
@@ -66,34 +63,27 @@ padding:20px;
     </div>
     <br>
     <ul>
-        <li><a class="active" href="stockItemsusers.jsp">stock item</a></li>
-        <li><a class="active" href="cart.jsp">cart</a></li>
-     
-        
-      
-         <li style="float: right;"><a class="active" href="index.jsp">logout</a></li>
-        <li style="float: right;"><a class="active" href="walletrecharge.jsp">wallet</a></li>
-        <li><a  class="active" href = "userpurchaselist.jsp">My order List</a></li>
-           <li> <a  class="active"href = "userinvoice.jsp">  invoice </a></li>
-             <li><a class="active" href="#help">help</a></li>
+        <li><a class="active" href="#home">stock item</a></li>
+        <li><a href="#suppiler">suppiler</a></li>
+        <li><a href="#purchase">PURCHASE</a></li>
+        <li><a href="#customer">customer</a></li>
+        <li><a href="#help">help</a></li>
+        <li style="float: right;"><a href="#logout">logout</a></li>
         <br><br>
       </ul>
       <%
-      StockImpl stock=new StockImpl();
-            
-            
-          ResultSet rs=  stock.showProduct();
+      InvoiceImpl impl=new InvoiceImpl();
+      ResultSet rs=  impl.showInvoice();
           //(ResultSet)session.getAttribute("showProduct");
       %>
     <br>
      <table style="width:80%;margin-left:100px;">
           <tr>
-            
-            <th scope="col">product_id</th>
-            <th scope="col">product_name</th>
-            <th scope="col">product_quantity</th>
-            <th scope="col">price</th>
-            <th scope="col">choice</th>
+           <th scope="col">bill_id</th>
+            <th scope="col">order_id</th>
+            <th scope="col">status</th>
+            <th scope="col">date</th>
+            <th scope="col">userId</th>
           </tr>
        
        
@@ -105,11 +95,12 @@ padding:20px;
           <tr>
             
             <td><%=rs.getInt(1)%></td>
-            <a><td><%=rs.getString(2)%></td>
-            <td><%=rs.getInt(3)%></td>
-            <td><%=rs.getDouble(4)%></td>
-          
-           		 <td><a href="product.jsp?pname=<%=rs.getString(2)%>"><button type="button" class="btn btn-primary">select</button></a></td>
+            <a><td><%=rs.getInt(2)%></td>
+             <td><%=rs.getString(3)%></td>
+             <td><%=rs.getDate(4)%></td>
+             <td><%=rs.getInt(5)%></td>
+        
+           		
       
           </tr>
            <%} %>
