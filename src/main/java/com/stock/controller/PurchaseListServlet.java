@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.stock.exception.InsufficientBalances;
+import com.stock.exception.InsufficientQuantityException;
 import com.stock.impl.CartImpl;
 import com.stock.impl.PuruchaseImpl;
 import com.stock.model.Cart;
@@ -35,7 +37,7 @@ public class PurchaseListServlet extends HttpServlet {
 	 *      response)
 	 */
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -58,23 +60,31 @@ public class PurchaseListServlet extends HttpServlet {
 		Purchase purchase = new Purchase(productid, userid, prodname, quantity, totalprice);
 
 		PuruchaseImpl pimpl = new PuruchaseImpl();
-		pimpl.insert(purchase);
-		Cart cart = new Cart(productid, userid);
-		CartImpl cimpl = new CartImpl();
-		cimpl.delete(cart);
+		int i=pimpl.insert(purchase);
+		try {
+		if(i==5) {
+			
+			throw new InsufficientBalances();
+		
+		}
+		
+		else {
+			Cart cart = new Cart(productid, userid);
+			CartImpl cimpl = new CartImpl();
+			cimpl.delete(cart);
+		}
 
-		response.sendRedirect("purchaseList.jsp");
+		response.sendRedirect("userpurchaselist.jsp");
 
+	}catch( InsufficientBalances e) {
+		
+		session.setAttribute("low bal",e.getMessage());
+		
+		response.sendRedirect("purchase.jsp");
+	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
 
+	}
 }

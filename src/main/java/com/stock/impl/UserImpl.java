@@ -154,7 +154,35 @@ String query="insert into users(user_name,email,address,password,phonenumber)val
 		return rs;
 		
 	}
-
+	
+	public  ResultSet showuser()  {
+		Connection con;
+		ResultSet rs=null;
+		
+		
+		
+          String showquery="select*from users where usertype='user'";
+			
+	
+		
+			try {
+				
+				con = ConnectionUtil.gbConnection();
+				
+				Statement stmt = con.createStatement();
+				rs = stmt.executeQuery(showquery);
+			
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return rs;
+			
+	
+	
+	
+	}
 	
 }
 

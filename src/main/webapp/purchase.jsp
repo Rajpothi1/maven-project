@@ -119,12 +119,26 @@ body
        
 
        
-    <a href="purchaseList.jsp"><button type="button" class="btn btn-primary">confirm</button></a>
+    <button type="submit" class="btn btn-primary">confirm</button>
        
       <a href="cart.jsp" ><button type="button" class="btn btn-dark">Cancel</button></a>
        
        
        </center>
+       
+       
+       
+       
+       
+        <% String lowbal=(String)session.getAttribute("low bal"); 
+
+if(lowbal !=null){
+	%>
+	<h3><%= session.getAttribute("low bal") %></h3>
+<% }
+session.removeAttribute("low bal") ;
+%>
+       
        </div>
        </form>
 

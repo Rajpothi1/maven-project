@@ -16,23 +16,11 @@ import com.stock.model.Invoice;
  */
 @WebServlet("/invoice")
 public class InvoiceServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InvoiceServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
     
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session=request.getSession();
 		System.out.println("invoice");
 		int orderid=Integer.parseInt(session.getAttribute("orderid").toString());
@@ -42,7 +30,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		System.out.println(deliverydate);
 		System.out.println("invoice date");
 	
-		int userid = Integer.parseInt(session.getAttribute("purchaseuserid").toString());
+		int userid = Integer.parseInt(session.getAttribute("users_id").toString());
 		
 	
 		Invoice invoice=new Invoice(orderid,deliverydate,userid);	
@@ -55,7 +43,4 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
  */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);	}
 }

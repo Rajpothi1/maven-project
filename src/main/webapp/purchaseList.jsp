@@ -118,7 +118,8 @@ body
             <td><%=rs.getDate(8)%></td>
             
          	<% session.setAttribute("orderid",rs.getInt(1) );
-         	session.setAttribute("purchaseuserid",rs.getInt(3) );%>
+         	
+         	%>
            		
       
           </tr>

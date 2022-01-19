@@ -11,13 +11,21 @@ import com.stock.model.Purchase;
 import com.stock.util.ConnectionUtil;
 
 public class PuruchaseImpl  implements PurchaseDao{
-public void insert(Purchase purchase)  {
-		String updateQuery="update users set wallet=(select wallet from users where user_id=?)-? where user_id=?";
+public int insert(Purchase purchase)  {
+	String updateQuery1="select wallet from users where user_id='"+purchase.getUserId()+"'";	
+	String updateQuery="update users set wallet=(select wallet from users where user_id=?)-? where user_id=?";
 		String insertQuery="insert into purchases_list (product_id,user_id,product_name,quantity,total_price )values (?,?,?,?,?)";
-		
+		int num=0;
 		Connection con;
 		try {
 			con = ConnectionUtil.gbConnection();
+			Statement st=con.createStatement();
+			ResultSet rs2=st.executeQuery(updateQuery1);
+			double wallet=0;
+			if(rs2.next()) {
+				wallet=rs2.getDouble(1);
+			}
+			if(wallet>purchase.getTotalPrice()) {
 			PreparedStatement pstmt1= con.prepareStatement(updateQuery);
 			pstmt1.setInt(1, purchase.getUserId());
 			pstmt1.setDouble(2, purchase.getTotalPrice());
@@ -36,7 +44,10 @@ public void insert(Purchase purchase)  {
 			System.out.println(i+ "inserted");
 			pstmt.close();
 			con.close();
-
+			}else {
+				//System.out.println("low bal");
+				num=5;
+			}
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -45,6 +56,8 @@ public void insert(Purchase purchase)  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return num;
+		
 			}
 
 public void updated(Purchase purchase1 )  {

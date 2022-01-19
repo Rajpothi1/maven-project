@@ -34,6 +34,38 @@ public class StockImpl  implements StockDao{
 		
 		return rs;
 	}
+	public ResultSet serachProduct(String proName) {
+		String pro = "select * from stock where lower(product_name ) like '"+proName  +"%' ";
+				ResultSet rs=null;
+		try {
+			System.out.println("sercahpro"+proName);
+			Connection con = ConnectionUtil.gbConnection();
+
+			
+			
+			PreparedStatement pre=con.prepareStatement(pro);
+			
+			
+			rs = pre.executeQuery();
+//			if(rs.next()) {
+//				System.out.println(rs.getString(1) + "xcvbghnjk");
+//			}
+		System.out.println("serach");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return rs;
+	}
+
+	
+	
+	
+	
+	
+	
+	
 
 	public void insert(Stock pro) {
 

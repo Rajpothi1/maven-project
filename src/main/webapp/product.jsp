@@ -95,17 +95,43 @@ margin-left:500px;
 			<% session.setAttribute("product id",rs.getInt(1) );
 			session.setAttribute("price",rs.getDouble(4));
 			session.setAttribute("productName", rs.getString(2));
+			
+			session.setAttribute("currentqty", rs.getInt(3));
 			%>
       <%} %>  
+      
+      
+      
+      
        <br><br><br>
       <div class="one">
        
        <lable>How much do you want to buy :</lable><br>
-       <input type="number" name="quantity" id="quantity" ><br>
+       <input type="number" name="quantity" id="quantity" list ="quantity" autofocus required placeholder="enter quantity" min="1" ><br>
         <lable>Expected no of days :</lable><br>
-       <input type="number" name="date" id="date" ><br><br>
+       <input type="number" name="date" id="date"  list ="date" autofocus required placeholder="expected no of days" min="1" ><br><br>
              <button type="submit" >submit</button>
       </div>
+      
+      
+        <% String qtyerror=(String)session.getAttribute("qtyerror"); 
+
+if(qtyerror !=null){
+	%>
+	<h3><%= session.getAttribute("qtyerror") %></h3>
+<% }
+session.removeAttribute("qtyerror") ;
+%>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
        </form>
 </body>
 </html>

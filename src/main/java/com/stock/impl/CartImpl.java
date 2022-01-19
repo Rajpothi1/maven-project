@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,9 +110,31 @@ public ResultSet allcart(int userid){
 		
 			
 			
+	public ResultSet viewCart(){
+		
+		String viewquery="select * from cart ";
+		
+		ResultSet rs=null;
+		try {
+			Connection con = null;
+			try {
+				con = ConnectionUtil.gbConnection();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Statement stmt = con.createStatement();
+			rs = stmt.executeQuery(viewquery);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rs;
+	
 			
 			
-			
-}		
+}		}
 
 

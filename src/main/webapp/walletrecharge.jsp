@@ -112,7 +112,7 @@ table, th, td {
 	<form action="wallet" method="get">
 	Current wallet amount:<span><%=wall%></span><br><br>
 	Enter recharge amount:<br>
-	<input type="number" name="amount" id="number"><br><br>
+	<input type="number" name="amount" id="number" list ="amount" autofocus required placeholder="enter amount" min="0"><br><br>
 	Enter your password:<br>
 	<input type="password" name="password" id="password"><br><br>
 	
