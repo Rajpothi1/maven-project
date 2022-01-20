@@ -183,6 +183,32 @@ String query="insert into users(user_name,email,address,password,phonenumber)val
 	
 	
 	}
+	public  ResultSet userview(int userid)  {
+		Connection con;
+		ResultSet rs=null;
+	 String usershow= "select * from users where user_id=?";
+			try {
+				
+				con = ConnectionUtil.gbConnection();
+				
+				PreparedStatement pstmt = con.prepareStatement(usershow);
+				pstmt.setInt(1, userid);
+				 rs=pstmt.executeQuery();
+				
+						
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return rs;
+			
+	
+	
+	
+	}
+	
+
 	
 }
 

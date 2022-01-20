@@ -1,144 +1,89 @@
    
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- <%@ page import="java.sql.ResultSet"
- import ="com.stock.impl.*" %>   
+     <%@ page import="java.sql.ResultSet"
+ import ="com.stock.impl.*" import = "javax.servlet.http.HttpSession" %>   
+ 
+    
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock item</title>
-  <style>
-body {
-      margin: 0;
-      font-family: Arial;
-      background:linear-gradient( to right,#8e9eab,#eef2f3);
-
+<meta charset="ISO-8859-1">
+<title>users Details</title>
+ <style>
+    .h1{
+        background-color: red;
+        position: absolute; left: 10px;top: 10px;
+        width: 100%;
     }
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  margin-top: 70px;
+}
 
-    .topnav {
-      overflow: hidden;
-      background-color: #333;
-    }
+li {
+  float: left;
+}
+body
+{
+ background:linear-gradient(lightblue,lightgreen);
+}
 
-    .topnav a {
-      float: left;
-      display: block;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-    }
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-    .active {
-      background-color: #04AA6D;
-      color: white;
-    }
+li a:hover:not(.active) {
+  background-color: #111;
+}
 
-    .topnav .icon {
-      display: none;
-    }
-
-    .dropdown {
-      float: left;
-      overflow: hidden;
-    }
-
-    .dropdown .dropbtn {
-      font-size: 17px;
-      border: none;
-      outline: none;
-      color: white;
-      padding: 14px 16px;
-      background-color: inherit;
-      font-family: inherit;
-      margin: 0;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-
-    .dropdown-content a {
-      float: none;
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      text-align: left;
-    }
-
-    .topnav a:hover,
-    .dropdown:hover .dropbtn {
-      background-color: #555;
-      color: white;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-
-    .topnav a.icon {
-      float: right;
-      display: block;
-    }
-    .h1
-    {
-    background-color:red;
-    }
-    table{
-    margin-top:100px;
-    margin-left:100px;}
+.active {
+  background-color: #04AA6D;
+}
+table,th,td{
+border:1px solid black;
+border-collapse:collapse;
+padding:20px;
+}
+.one
+{
+margin-left:500px;
+}
 </style>
 </head>
-<body>
 
-    
-    <div class="h1">
-        <center><h1 >STOCK INVENTORY MANAGEMENT</h1></center>
+<body>
+<div class="h1">
+        <center><h1>STOCK INVENTORY MANAGEMENT</h1></center>
     </div>
-   
-      <div class="topnav" id="myTopnav">
-    <a href="invoice.jsp" >invoice</a>
-   
-     <a href="index.jsp" style=float:right>Logout</a>
-    <a href="Admincart.jsp">Cart</a>
-      <div class="dropdown">
-      <button class="dropbtn" >Stock item
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-content">
-        <a href="Additems.jsp">Add item</a>
-        <a href="updateitem.jsp">Update item </a>
-          <a href="deleteproduct.jsp">delete item </a>
-       
-      </div>
-    </div>
-    <a href = "AdminPurchaseCheck.jsp" style=float:right >Order Delivery Date</a>
-    <a href="purchaseList.jsp">PURCHASELIST</a>
-  
-    </div>
-      <%
+    <br>
+    <ul>
+        <li><a class="active" href="stockItemsusers.jsp">stock item</a></li>
+        <li><a class="active" href="cart.jsp">cart</a></li>
+     
+        <li><a class="active" href="userview.jsp">My Profile</a></li>
       
+         <li style="float: right;"><a class="active" href="index.jsp">logout</a></li>
+        <li style="float: right;"><a class="active" href="walletrecharge.jsp">wallet</a></li>
+        <li><a  class="active" href = "userpurchaselist.jsp">My order List</a></li>
+           <li> <a  class="active"href = "userinvoice.jsp">  invoice </a></li>
+             <li><a class="active" href="#help">help</a></li>
+        <br><br>
+      </ul>      <%
+      int userid = (int) session.getAttribute("user id");
+  	UserImpl ui = new UserImpl();
+  	ResultSet rs = ui.userview(userid);
+
       
-      UserImpl userview=new UserImpl();
-      ResultSet rs= userview.showuser();
-          //(ResultSet)session.getAttribute("showProduct");
-      %>
+         %>
     <br>
      <table border=1; style="width:90%;margin-left:100px; border-collapse:collapse ">
           <tr>
@@ -173,7 +118,7 @@ body {
              <td><%=rs.getDouble(8)%></td>
             
             
-              <td>
+              
               
               
            		

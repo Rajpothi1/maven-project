@@ -73,6 +73,7 @@ margin-left:500px;
         <li><a class="active" href="stockItemsusers.jsp">stock item</a></li>
         <li><a class="active" href="cart.jsp">cart</a></li>
      
+         <li><a class="active" href="userview.jsp">My Profile</a></li>
         
       
          <li style="float: right;"><a class="active" href="index.jsp">logout</a></li>
