@@ -107,29 +107,30 @@ body {
         <center><h1 >STOCK INVENTORY MANAGEMENT</h1></center>
     </div>
    
-      <div class="topnav" id="myTopnav">
-    <a href="invoice.jsp" >invoice</a>
+    <div class="topnav" id="myTopnav">
+   <a href="stockItemsadmin.jsp" >Stock</a>
+   
+    <a href="invoice.jsp" >Invoice</a>
    
      <a href="index.jsp" style=float:right>Logout</a>
-    <a href="cart.jsp">Cart</a>
+    <a href="Admincart.jsp">Cart</a>
       <div class="dropdown">
-      <button class="dropbtn" >Stock item
+      <button class="dropbtn" >StockItem Add
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="Additems.jsp">Add item</a>
-        <a href="updateitem.jsp">Update item </a>
-          <a href="deleteproduct.jsp">delete item </a>
+        <a href="Additems.jsp">Add New Product</a>
        
       </div>
     </div>
     <a href = "AdminPurchaseCheck.jsp" style=float:right >Order Delivery Date</a>
-    <a href="purchaseList.jsp">PURCHASELIST</a>
+    <a href="purchaseList.jsp">PurchaseList</a>
   
     </div>
+
 <div class="container">    
     
-    	<h2>Add item</h2>
+    	<h2>Add Item</h2>
 	<form action="additemservlet" method="post">
 	Enter product name:<br>
 	<input type="text" name="proname" id="proname" required placeholder="enter productname"><br>
@@ -137,7 +138,7 @@ body {
 	 <input type="number" name="quantity" id="quantity" list ="quantity"  required placeholder="enter quantity" min="1"><br>
 	Enter product price:<br>
 	<input type="number" name="amount" id="number" list ="amount"  required placeholder="enter amount" min="0"><br><br>
-	<button type="submit">Add item</button>
+	<button type="submit">Add Item</button>
 	</div>
 	</form>
 </body>

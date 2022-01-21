@@ -110,28 +110,27 @@ body {
     <div class="h1">
         <center><h1 >STOCK INVENTORY MANAGEMENT</h1></center>
     </div>
+   <div class="topnav" id="myTopnav">
+   <a href="stockItemsadmin.jsp" >Stock</a>
    
-      <div class="topnav" id="myTopnav">
-    <a href="invoice.jsp" >invoice</a>
-    <a href="adminuserview.jsp" >UserDetails</a>
-     <a href="Login.jsp" style=float:right>Logout</a>
+    <a href="invoice.jsp" >Invoice</a>
+   
+     <a href="index.jsp" style=float:right>Logout</a>
     <a href="Admincart.jsp">Cart</a>
       <div class="dropdown">
-      <button class="dropbtn" >Stock item
+      <button class="dropbtn" >StockItem Add
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="Additems.jsp">Add item</a>
-        <a href="updateitem.jsp">Update item </a>
-          <a href="deleteproduct.jsp">delete item </a>
+        <a href="Additems.jsp">Add New Product</a>
        
       </div>
     </div>
     <a href = "AdminPurchaseCheck.jsp" style=float:right >Order Delivery Date</a>
-    <a href="purchaseList.jsp">PURCHASELIST</a>
+    <a href="purchaseList.jsp">PurchaseList</a>
   
     </div>
-      <%
+    <%
       StockImpl stock=new StockImpl();
             
             
@@ -143,11 +142,12 @@ body {
      <table border=1 style="width:80%;margin-left:100px;">
           <tr>
             
-            <th scope="col">product_id</th>
-            <th scope="col">product_name</th>
-            <th scope="col">product_quantity</th>
-            <th scope="col">price</th>
-            
+           	<th scope="col">ProductId</th>
+			<th scope="col">ProductName</th>
+			<th scope="col">ProductQuantity</th>
+			<th scope="col">Price</th>
+			<th>Update Quantity</th>
+		 	<th >Remove Product</th>
           </tr>
        
        
@@ -166,8 +166,9 @@ body {
             <a><td><%=rs.getString(2)%></td>
             <td><%=rs.getInt(3)%></td>
             <td><%=rs.getDouble(4)%></td>
-          
-           		
+          	<td><a href="updateitem.jsp?name=<%=rs.getString(2) %>">Update Quantity</a></td>
+          	
+           	<td><a href="deleteproduct.jsp?proid=<%=rs.getInt(1) %>">Delete Product</a></td>	
       
           </tr>
           </tbody>

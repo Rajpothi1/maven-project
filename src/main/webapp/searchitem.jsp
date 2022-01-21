@@ -82,22 +82,20 @@ table, th, td {
 	</div>
 	<br>
 	<ul>
-		<li><a class="active" href="stockItemsusers.jsp">stock item</a></li>
-		<li><a class="active" href="cart.jsp">cart</a></li>
-
-
-
-		<li style="float: right;"><a class="active" href="index.jsp">logout</a></li>
-		<li style="float: right;"><a class="active"
-			href="walletrecharge.jsp">wallet</a></li>
-		<li><a class="active" href="userpurchaselist.jsp">My order
-				List</a></li>
-		<li><a class="active" href="userinvoice.jsp"> invoice </a></li>
-		<li><a class="active" href="#help">help</a></li>
-		<br>
-		<br>
-	</ul>
-	<form action="searchitem.jsp" method="">
+        <li><a class="active" href="stockItemsusers.jsp">Stock Item</a></li>
+        <li><a class="active" href="usercart.jsp"> My Cart</a></li>
+     
+         <li><a class="active" href="userview.jsp">My Profile</a></li>
+        
+      
+         <li style="float: right;"><a class="active" href="index.jsp">Logout</a></li>
+        <li style="float: right;"><a class="active" href="walletrecharge.jsp">Wallet</a></li>
+        <li><a  class="active" href = "userpurchaselist.jsp">My order List</a></li>
+           <li> <a  class="active"href = "userinvoice.jsp">  Invoice </a></li>
+             <li><a class="active" href="#help">Help</a></li>
+        <br><br>
+      </ul>
+      	<form action="searchitem.jsp" method="">
 		Enter Product Name:<br> <input type="text" name="proname"
 			id="proname"><br>
 		<br>
@@ -118,11 +116,11 @@ table, th, td {
 	<table style="width: 80%; margin-left: 100px;">
 		<tr>
 
-			<th scope="col">product_id</th>
-			<th scope="col">product_name</th>
-			<th scope="col">product_quantity</th>
-			<th scope="col">price</th>
-			<th scope="col">choice</th>
+				<th scope="col">ProductId</th>
+			<th scope="col">ProductName</th>
+			<th scope="col">ProductQuantity</th>
+			<th scope="col">Price</th>
+			<th scope="col">Choice</th>
 		</tr>
 
 

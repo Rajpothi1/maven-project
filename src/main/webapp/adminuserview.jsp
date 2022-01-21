@@ -111,25 +111,28 @@ body {
     <div class="h1">
         <center><h1 >STOCK INVENTORY MANAGEMENT</h1></center>
     </div>
-   
       <div class="topnav" id="myTopnav">
-    <a href="invoice.jsp" >invoice</a>
+   <a href="stockItemsadmin.jsp" >Stock</a>
+   
+    <a href="invoice.jsp" >Invoice</a>
    
      <a href="index.jsp" style=float:right>Logout</a>
     <a href="Admincart.jsp">Cart</a>
       <div class="dropdown">
-      <button class="dropbtn" >Stock item
+      <button class="dropbtn" >StockItem Add
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content">
-        <a href="Additems.jsp">Add item</a>
-        <a href="updateitem.jsp">Update item </a>
-          <a href="deleteproduct.jsp">delete item </a>
+        <a href="Additems.jsp">Add New Product</a>
        
       </div>
     </div>
     <a href = "AdminPurchaseCheck.jsp" style=float:right >Order Delivery Date</a>
-    <a href="purchaseList.jsp">PURCHASELIST</a>
+    <a href="purchaseList.jsp">PurchaseList</a>
+  
+    </div>
+ <a href = "AdminPurchaseCheck.jsp" style=float:right >Order Delivery Date</a>
+    <a href="purchaseList.jsp">PurchaseList</a>
   
     </div>
       <%
@@ -143,15 +146,15 @@ body {
      <table border=1; style="width:90%;margin-left:100px; border-collapse:collapse ">
           <tr>
             
-            <th scope="col">User_id</th>
-            <th scope="col">User_name</th>
+            <th scope="col">UserId</th>
+            <th scope="col">UserName</th>
             <th scope="col">Email</th>
-             <th scope="col">Addrees</th>
-            <th scope="col">password</th>
-            <th scope="col">phonenumber</th>
+             <th scope="col">Address</th>
+            <th scope="col">Password</th>
+            <th scope="col">PhoneNumber</th>
             
-            <th scope="col">usertype</th>
-            <th scope="col">walletamount</th>
+            <th scope="col">UserType</th>
+            <th scope="col">WalletAmount</th>
             
           </tr>
        

@@ -81,24 +81,21 @@ table, th, td {
 		</center>
 	</div>
 	<br>
-	<ul>
-		<li><a class="active" href="stockItemsusers.jsp">stock item</a></li>
-		<li><a class="active" href="cart.jsp">Cart</a></li>
-
- <li><a class="active" href="userview.jsp">My Profile</a></li>
-
-
-		<li style="float: right;"><a class="active" href="index.jsp">logout</a></li>
-		<li style="float: right;"><a class="active"
-			href="walletrecharge.jsp">wallet</a></li>
-		<li><a class="active" href="userpurchaselist.jsp">My order
-				List</a></li>
-		<li><a class="active" href="userinvoice.jsp"> invoice </a></li>
-		<li><a class="active" href="#help">help</a></li>
-		<br>
-		<br>
-	</ul>
-</head>
+<ul>
+        <li><a class="active" href="stockItemsusers.jsp">Stock Item</a></li>
+        <li><a class="active" href="usercart.jsp"> My Cart</a></li>
+     
+         <li><a class="active" href="userview.jsp">My Profile</a></li>
+        
+      
+         <li style="float: right;"><a class="active" href="index.jsp">Logout</a></li>
+        <li style="float: right;"><a class="active" href="walletrecharge.jsp">Wallet</a></li>
+        <li><a  class="active" href = "userpurchaselist.jsp">My order List</a></li>
+           <li> <a  class="active"href = "userinvoice.jsp">  Invoice </a></li>
+             <li><a class="active" href="#help">Help</a></li>
+        <br><br>
+      </ul>
+      </head>
 <body>
 
 	<%
@@ -117,11 +114,11 @@ table, th, td {
 	Enter your password:<br>
 	<input type="password" name="password" id="password"><br><br>
 	
-	<button type="submit" class="btn btn-success">wallet recharge</button>
+	<button type="submit" class="btn btn-success">Wallet Recharge</button>
 	
 	</form><br><br>
 	
-	<a href="stockItemsusers.jsp" ><button class="btn btn-info">Stocks</button></a>
+	<a href="stockItemsusers.jsp" ><button class="btn btn-info">Cancel</button></a>
 </center>
 </body>
 </html>

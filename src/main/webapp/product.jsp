@@ -69,21 +69,20 @@ margin-left:500px;
         <center><h1>STOCK INVENTORY MANAGEMENT</h1></center>
     </div>
     <br>
-    <ul>
-        <li><a class="active" href="stockItemsusers.jsp">stock item</a></li>
-        <li><a class="active" href="cart.jsp">cart</a></li>
+  <ul>
+        <li><a class="active" href="stockItemsusers.jsp">Stock Item</a></li>
+        <li><a class="active" href="usercart.jsp"> My Cart</a></li>
      
          <li><a class="active" href="userview.jsp">My Profile</a></li>
         
       
-         <li style="float: right;"><a class="active" href="index.jsp">logout</a></li>
-        <li style="float: right;"><a class="active" href="walletrecharge.jsp">wallet</a></li>
+         <li style="float: right;"><a class="active" href="index.jsp">Logout</a></li>
+        <li style="float: right;"><a class="active" href="walletrecharge.jsp">Wallet</a></li>
         <li><a  class="active" href = "userpurchaselist.jsp">My order List</a></li>
-           <li> <a  class="active"href = "userinvoice.jsp">  invoice </a></li>
-             <li><a class="active" href="#help">help</a></li>
+           <li> <a  class="active"href = "userinvoice.jsp">  Invoice </a></li>
+             <li><a class="active" href="#help">Help</a></li>
         <br><br>
-      </ul>
-    
+      </ul>  
 <form action="cart" method="post">
 	<%if(rs.next()) { %>
             

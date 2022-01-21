@@ -65,19 +65,21 @@ margin-left:500px;
         <center><h1>STOCK INVENTORY MANAGEMENT</h1></center>
     </div>
     <br>
-    <ul>
-        <li><a class="active" href="stockItemsusers.jsp">stock item</a></li>
-        <li><a class="active" href="cart.jsp">cart</a></li>
+  <ul>
+        <li><a class="active" href="stockItemsusers.jsp">Stock Item</a></li>
+        <li><a class="active" href="usercart.jsp"> My Cart</a></li>
      
-        <li><a class="active" href="userview.jsp">My Profile</a></li>
+         <li><a class="active" href="userview.jsp">My Profile</a></li>
+        
       
-         <li style="float: right;"><a class="active" href="index.jsp">logout</a></li>
-        <li style="float: right;"><a class="active" href="walletrecharge.jsp">wallet</a></li>
+         <li style="float: right;"><a class="active" href="index.jsp">Logout</a></li>
+        <li style="float: right;"><a class="active" href="walletrecharge.jsp">Wallet</a></li>
         <li><a  class="active" href = "userpurchaselist.jsp">My order List</a></li>
-           <li> <a  class="active"href = "userinvoice.jsp">  invoice </a></li>
-             <li><a class="active" href="#help">help</a></li>
+           <li> <a  class="active"href = "userinvoice.jsp">  Invoice </a></li>
+             <li><a class="active" href="#help">Help</a></li>
         <br><br>
-      </ul>      <%
+      </ul>      
+            <%
       int userid = (int) session.getAttribute("user id");
   	UserImpl ui = new UserImpl();
   	ResultSet rs = ui.userview(userid);
@@ -86,17 +88,17 @@ margin-left:500px;
          %>
     <br>
      <table border=1; style="width:90%;margin-left:100px; border-collapse:collapse ">
-          <tr>
+           <tr>
             
-            <th scope="col">User_id</th>
-            <th scope="col">User_name</th>
+            <th scope="col">UserId</th>
+            <th scope="col">UserName</th>
             <th scope="col">Email</th>
-             <th scope="col">Addrees</th>
-            <th scope="col">password</th>
-            <th scope="col">phonenumber</th>
+             <th scope="col">Address</th>
+            <th scope="col">Password</th>
+            <th scope="col">PhoneNumber</th>
             
-            <th scope="col">usertype</th>
-            <th scope="col">walletamount</th>
+            <th scope="col">UserType</th>
+            <th scope="col">WalletAmount</th>
             
           </tr>
        

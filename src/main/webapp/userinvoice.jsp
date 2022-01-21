@@ -66,21 +66,20 @@ body
         <center><h1>STOCK INVENTORY MANAGEMENT</h1></center>
     </div>
     <br>
-    <ul>
-        <li><a class="active" href="stockItemsusers.jsp">stock item</a></li>
-        <li><a class="active" href="cart.jsp">cart</a></li>
+   <ul>
+        <li><a class="active" href="stockItemsusers.jsp">Stock Item</a></li>
+        <li><a class="active" href="usercart.jsp"> My Cart</a></li>
      
          <li><a class="active" href="userview.jsp">My Profile</a></li>
         
       
-         <li style="float: right;"><a class="active" href="index.jsp">logout</a></li>
-        <li style="float: right;"><a class="active" href="walletrecharge.jsp">wallet</a></li>
+         <li style="float: right;"><a class="active" href="index.jsp">Logout</a></li>
+        <li style="float: right;"><a class="active" href="walletrecharge.jsp">Wallet</a></li>
         <li><a  class="active" href = "userpurchaselist.jsp">My order List</a></li>
-           <li> <a  class="active"href = "userinvoice.jsp">  invoice </a></li>
-             <li><a class="active" href="#help">help</a></li>
+           <li> <a  class="active"href = "userinvoice.jsp">  Invoice </a></li>
+             <li><a class="active" href="#help">Help</a></li>
         <br><br>
-      </ul>
-      <%
+      </ul>   <%
       int userid=Integer.parseInt(session.getAttribute("user id").toString());
       InvoiceImpl impl=new InvoiceImpl();
       ResultSet rs=impl.showUserInvoice(userid);
@@ -89,11 +88,11 @@ body
     <br>
      <table style="width:80%;margin-left:100px;">
           <tr>
-           <th scope="col">bill_id</th>
-            <th scope="col">order_id</th>
-            <th scope="col">status</th>
-            <th scope="col">date</th>
-             <th scope="col">userId</th>
+           <th scope="col">BillId</th>
+            <th scope="col">OrderId</th>
+            <th scope="col">Status</th>
+            <th scope="col">Date</th>
+            <th scope="col">UserId</th>
           </tr>
        
        
